@@ -1,0 +1,14 @@
+# Compilation
+libasm.so
+*.o
+
+# Unit tests
+unit_tests
+*.gcda
+*.gcno
+*.gcov
+
+# Others
+.vscode/
+vgcore*
+*.log
