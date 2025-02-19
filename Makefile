@@ -9,11 +9,13 @@
 
 NAME = libasm.so
 
-SRC	=
+SRC	= src/strlen.asm
 
-TEST_FILES =
+TEST_FILES = tests/tests_strlen.c
 
 OBJ = $(SRC:.asm=.o)
+
+TEST_OBJ = $(TEST_FILES:.c=.o)
 
 COMPILER = nasm
 
@@ -33,12 +35,19 @@ $(NAME): $(OBJ)
 
 clean:
 	rm -f $(OBJ)
+	rm -f $(TEST_OBJ)
 
 fclean: clean
 	rm -f $(NAME)
+	rm -f unit_tests
+	rm -f *.gcno
+	rm -f *.gcda
 
 re: fclean all
 
-unit_tests:
+unit_tests: $(OBJ) $(TEST_OBJ) $(NAME)
+	gcc -o unit_tests $(OBJ) $(TEST_OBJ) \
+	-L. -lasm -lcriterion --coverage
 
-tests_run:
+tests_run: unit_tests
+	LD_LIBRARY_PATH=. ./unit_tests
