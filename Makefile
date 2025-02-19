@@ -9,9 +9,11 @@
 
 NAME = libasm.so
 
-SRC	= src/strlen.asm
+SRC	= 	src/strlen.asm \
+		src/strchr.asm \
 
-TEST_FILES = tests/tests_strlen.c
+TEST_FILES = 	tests/tests_strlen.c \
+				tests/tests_strchr.c \
 
 OBJ = $(SRC:.asm=.o)
 
