@@ -11,9 +11,11 @@ NAME = libasm.so
 
 SRC	= 	src/strlen.asm \
 		src/strchr.asm \
+		src/strrchr.asm \
 
 TEST_FILES = 	tests/tests_strlen.c \
 				tests/tests_strchr.c \
+				tests/tests_strrchr.c \
 
 OBJ = $(SRC:.asm=.o)
 
