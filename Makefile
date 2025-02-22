@@ -16,6 +16,7 @@ SRC	= 	src/strlen.asm \
 		src/memcpy.asm \
 		src/strcmp.asm \
 		src/memmove.asm \
+		src/strncmp.asm \
 
 TEST_FILES = 	tests/tests_strlen.c \
 				tests/tests_strchr.c \
@@ -24,6 +25,7 @@ TEST_FILES = 	tests/tests_strlen.c \
 				tests/tests_memcpy.c \
 				tests/tests_strcmp.c \
 				tests/tests_memmove.c \
+				tests/tests_strncmp.c \
 
 OBJ = $(SRC:.asm=.o)
 
