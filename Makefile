@@ -19,6 +19,7 @@ SRC	= 	src/strlen.asm \
 		src/strncmp.asm \
 		src/strcasecmp.asm \
 		src/strstr.asm \
+		src/strpbrk.asm \
 
 TEST_FILES = 	tests/tests_strlen.c \
 				tests/tests_strchr.c \
@@ -30,6 +31,7 @@ TEST_FILES = 	tests/tests_strlen.c \
 				tests/tests_strncmp.c \
 				tests/tests_strcasecmp.c \
 				tests/tests_strstr.c \
+				tests/tests_strpbrk.c \
 
 OBJ = $(SRC:.asm=.o)
 
