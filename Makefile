@@ -14,12 +14,14 @@ SRC	= 	src/strlen.asm \
 		src/strrchr.asm \
 		src/memset.asm \
 		src/memcpy.asm \
+		src/strcmp.asm \
 
 TEST_FILES = 	tests/tests_strlen.c \
 				tests/tests_strchr.c \
 				tests/tests_strrchr.c \
 				tests/tests_memset.c \
 				tests/tests_memcpy.c \
+				tests/tests_strcmp.c \
 
 OBJ = $(SRC:.asm=.o)
 
