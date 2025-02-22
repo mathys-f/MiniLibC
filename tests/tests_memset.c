@@ -30,7 +30,7 @@ static void test_memset(void *s, int c, size_t n)
 }
 
 
-Test(memset, basic_test)
+Test(memset, basic_test, .init = redirect_all_stdout)
 {
     char buffer[10];
 
@@ -39,7 +39,7 @@ Test(memset, basic_test)
         cr_assert_eq(buffer[i], 'A');
 }
 
-Test(memset, partial_fill)
+Test(memset, partial_fill, .init = redirect_all_stdout)
 {
     char buffer[10] = {0};
 
@@ -50,7 +50,7 @@ Test(memset, partial_fill)
         cr_assert_eq(buffer[i], 0);
 }
 
-Test(memset, zero_length)
+Test(memset, zero_length, .init = redirect_all_stdout)
 {
     char buffer[10] = {0};
 
@@ -59,7 +59,7 @@ Test(memset, zero_length)
         cr_assert_eq(buffer[i], 0);
 }
 
-Test(memset, large_fill)
+Test(memset, large_fill, .init = redirect_all_stdout)
 {
     char buffer[1000];
 

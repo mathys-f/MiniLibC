@@ -29,8 +29,7 @@ static void test_memcpy(void *dest, void *src, size_t n)
     dlclose(handle);
 }
 
-
-Test(memcpy, basic_test)
+Test(memcpy, basic_test, .init = redirect_all_stdout)
 {
     char buffer[10] = {0};
     char buffer2[10] = {0};
@@ -41,7 +40,7 @@ Test(memcpy, basic_test)
         cr_assert_eq(buffer2[i], 'A');
 }
 
-Test(memcpy, partial_fill)
+Test(memcpy, partial_fill, .init = redirect_all_stdout)
 {
     char buffer[10] = {0};
     char buffer2[10] = {0};
@@ -54,7 +53,7 @@ Test(memcpy, partial_fill)
         cr_assert_eq(buffer2[i], 0);
 }
 
-Test(memcpy, zero_length)
+Test(memcpy, zero_length, .init = redirect_all_stdout)
 {
     char buffer[10] = {0};
     char buffer2[10] = {0};
@@ -65,7 +64,7 @@ Test(memcpy, zero_length)
         cr_assert_eq(buffer2[i], 0);
 }
 
-Test(memcpy, large_fill)
+Test(memcpy, large_fill, .init = redirect_all_stdout)
 {
     char buffer[1000];
     char buffer2[1000];
