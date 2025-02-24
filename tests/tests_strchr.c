@@ -1,8 +1,8 @@
 /*
 ** EPITECH PROJECT, 2025
-** tests_strlen.c
+** tests_strchr.c
 ** File description:
-** tests_strlen.c
+** tests_strchr.c
 */
 
 #include <criterion/criterion.h>
