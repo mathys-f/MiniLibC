@@ -56,3 +56,8 @@ Test(strchr, long_string, .init = redirect_all_stdout)
     long_string[1000] = '\0';
     test_strchr(long_string, 'a');
 }
+
+Test(strchr, null_term, .init = redirect_all_stdout)
+{
+    test_strchr("Hello\0", '\0');
+}
