@@ -12,10 +12,28 @@ NAME = libasm.so
 SRC	= 	src/strlen.asm \
 		src/strchr.asm \
 		src/strrchr.asm \
+		src/memset.asm \
+		src/memcpy.asm \
+		src/strcmp.asm \
+		src/memmove.asm \
+		src/strncmp.asm \
+		src/strcasecmp.asm \
+		src/strstr.asm \
+		src/strpbrk.asm \
+		src/strcspn.asm \
 
 TEST_FILES = 	tests/tests_strlen.c \
 				tests/tests_strchr.c \
 				tests/tests_strrchr.c \
+				tests/tests_memset.c \
+				tests/tests_memcpy.c \
+				tests/tests_strcmp.c \
+				tests/tests_memmove.c \
+				tests/tests_strncmp.c \
+				tests/tests_strcasecmp.c \
+				tests/tests_strstr.c \
+				tests/tests_strpbrk.c \
+				tests/tests_strcspn.c \
 
 OBJ = $(SRC:.asm=.o)
 
