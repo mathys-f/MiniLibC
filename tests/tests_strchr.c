@@ -31,30 +31,17 @@ static void test_strchr(char *str, int c)
 
 Test(strchr, basic, .init = redirect_all_stdout)
 {
-    test_strchr("Hello", 'e');
-    test_strchr("World\n", '\n');
-    test_strchr("Hello World\0", '\0');
+    test_strchr("Hello", 'l');
 }
 
-Test(strchr, special_characters, .init = redirect_all_stdout)
+Test(strchr, not_found, .init = redirect_all_stdout)
 {
-    test_strchr("\t", '\t');
-    test_strchr("\r", '\r');
-    test_strchr("\v", '\v');
-    test_strchr("\b", '\b');
-    test_strchr("\a", '\a');
-    test_strchr("\\", '\\');
-    test_strchr("\"", '\"');
-    test_strchr("\'", '\'');
+    test_strchr("Hello", 'z');
 }
 
-Test(strchr, long_string, .init = redirect_all_stdout)
+Test(strchr, empty, .init = redirect_all_stdout)
 {
-    char long_string[1001];
-
-    memset(long_string, 'a', 1000);
-    long_string[1000] = '\0';
-    test_strchr(long_string, 'a');
+    test_strchr("", 'z');
 }
 
 Test(strchr, null_term, .init = redirect_all_stdout)

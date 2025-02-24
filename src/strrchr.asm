@@ -14,18 +14,30 @@ section .text
 strrchr:
     PUSH RBP ; save RBP
     MOV RBP, RSP ; set RBP to RSP
+
     XOR RAX, RAX ; set RAX to 0
 
-    .loop:
+    .reverse:
         CMP byte [RDI], 0 ; check if end of string
-        JE .end ; if end of string, jump to end
-        CMP byte [RDI], SIL ; check if char is found
-        JNE .next ; if char is not found, jump to next
-        MOV RAX, RDI ; update return pointer
-
-    .next:
+        JE .loop ; if end of string, jump to loop
         INC RDI ; increment counter
+        JMP .reverse ; loop
+
+    .loop:
+        CMP byte [RDI], SIL ; check if char is found
+        JNE .found ; if char is found, jump to found
+        DEC RDI ; decrement counter
+        CMP byte [RDI], 0 ; check if start of string
+        JE .not_found ; if end of string, jump to not_found
         JMP .loop ; loop
+
+    .not_found:
+        XOR RAX, RAX ; set RAX to 0
+        JMP .end ; jump to end
+
+    .found:
+        MOV RAX, RDI ; return pointer to char
+        JMP .end ; jump to end
 
     .end:
         POP RBP ; restore RBP
