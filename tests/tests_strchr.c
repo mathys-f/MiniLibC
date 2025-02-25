@@ -43,3 +43,8 @@ Test(strchr, empty, .init = redirect_all_stdout)
 {
     test_strchr("", 'z');
 }
+
+Test(strchr, null_term, .init = redirect_all_stdout)
+{
+    test_strchr("Hello\0", '\0');
+}
