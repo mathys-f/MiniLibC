@@ -15,13 +15,20 @@ memmove:
     PUSH RBP ; save RBP
     MOV RBP, RSP ; set RBP to RSP
 
+    CMP RDI, 0 ; compare RDI to 0
+    JE .end ; if RDI == 0, jump to end
+    CMP RSI, 0 ; compare RSI to 0
+    JE .end ; if RSI == 0, jump to end
+    CMP RDX, 0 ; compare RDX to 0
+    JE .end ; if RDX == 0, jump to end
+
     CMP RDI, RSI ; compare RDI to RSI
     JE .end ; if RDI == RSI, jump to end
 
     CMP RDI, RSI ; compare RDI to RSI
     JB .forward ; if RDI < RSI, jump to forward
 
-    .backward:
+     .backward:
         MOV RCX, RDX ; set RCX to RDX
         DEC RCX ; decrement RCX
 
@@ -39,6 +46,7 @@ memmove:
     .forward_loop:
         CMP RCX, RDX ; compare RCX to RDX
         JGE .end ; if RCX >= RDX, jump to end
+
         MOV AL, byte [RSI + RCX] ; set AL to byte at RS + RCX
         MOV byte [RDI + RCX], AL ; set byte at RD + RCX to AL
         INC RCX ; increment counter
