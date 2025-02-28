@@ -34,9 +34,11 @@ memmove:
 
     .backward_loop:
         CMP RCX, -1 ; compare RCX to -1
-        JL .end ; if RCX < -1, jump to end
+        JLE .end ; if RCX <= -1, jump to end
+
         MOV AL, byte [RSI + RCX] ; set AL to byte at RS + RCX
         MOV byte [RDI + RCX], AL ; set byte at RD + RCX to AL
+
         DEC RCX ; decrement counter
         JMP .backward_loop ; loop
 
@@ -48,7 +50,8 @@ memmove:
         JGE .end ; if RCX >= RDX, jump to end
 
         MOV AL, byte [RSI + RCX] ; set AL to byte at RS + RCX
-        MOV byte [RDI + RCX], AL ; set byte at RD + RCX to AL
+        MOV byte [RDI + RCX], AL ; set byte at RDI + RCX to AL
+
         INC RCX ; increment counter
         JMP .forward_loop ; loop
 

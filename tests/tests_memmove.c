@@ -67,20 +67,30 @@ Test(memmove, zero_length, .init = redirect_all_stdout)
     cr_assert_str_eq(dest, "Hello");
 }
 
-Test(memmove, overlap, .init = redirect_all_stdout)
-{
-    char dest[10] = "Hello";
-    char src[10] = "World";
-    size_t n = 5;
-
-    test_memmove(dest, src, n);
-    cr_assert_str_eq(dest, "World");
-}
-
 Test(memmove, null_dest, .init = redirect_all_stdout)
 {
     char src[10] = "World";
     size_t n = 5;
 
     test_memmove(NULL, src, n);
+}
+
+Test(memmove, forward_overlap, .init = redirect_all_stdout)
+{
+    char dest[10] = "Hello";
+    char src[10] = "World";
+    size_t n = 3;
+
+    test_memmove(dest + 2, src, n);
+    cr_assert_str_eq(dest, "HeWor");
+}
+
+Test(memmove, backward_overlap, .init = redirect_all_stdout)
+{
+    char dest[10] = "Hello";
+    char src[10] = "World";
+    size_t n = 3;
+
+    test_memmove(dest, src + 2, n);
+    cr_assert_str_eq(dest, "rldlo");
 }
