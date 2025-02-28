@@ -76,3 +76,11 @@ Test(memmove, overlap, .init = redirect_all_stdout)
     test_memmove(dest, src, n);
     cr_assert_str_eq(dest, "World");
 }
+
+Test(memmove, null_dest, .init = redirect_all_stdout)
+{
+    char src[10] = "World";
+    size_t n = 5;
+
+    test_memmove(NULL, src, n);
+}

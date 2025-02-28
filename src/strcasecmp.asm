@@ -21,19 +21,21 @@ strcasecmp:
         MOV AL, BYTE [RDI] ; load byte from RDI to AL
         MOV DL, BYTE [RSI] ; load byte from RSI to DL
 
-        CMP AL, 'a' ; compare AL with 'a'
-        JL .skip_lower ; jump if less
-        CMP AL, 'z' ; compare AL with 'z'
-        JG .skip_lower ; jump if greater
-        SUB AL, 32 ; subtract 32 from AL
+    .check_fisrt:
+        CMP AL, 'A' ; compare AL with 'A'
+        JL .check_second ; jump if less
+        CMP AL, 'Z' ; compare AL with 'Z'
+        JG .check_second ; jump if greater
+        ADD AL, 32 ; add 32 to AL
 
-        CMP DL, 'a' ; compare DL with 'a'
-        JL .skip_lower ; jump if less
-        CMP DL, 'z' ; compare DL with 'z'
-        JG .skip_lower ; jump if greater
-        SUB DL, 32 ; subtract 32 from DL
+    .check_second:
+        CMP DL, 'A' ; compare DL with 'A'
+        JL .compare ; jump if less
+        CMP DL, 'Z' ; compare DL with 'Z'
+        JG .compare ; jump if greater
+        ADD DL, 32 ; add 32 from DL
 
-    .skip_lower:
+    .compare:
         CMP AL, DL ; compare AL with DL
         JNE .not_equal ; jump if not equal
 
