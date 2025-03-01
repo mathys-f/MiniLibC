@@ -16,10 +16,10 @@ strchr:
     MOV RBP, RSP ; set RBP to RSP
 
     .loop:
-        CMP byte [RDI], 0 ; check if end of string
-        JE .not_found ; if end of string, jump to not_found
         CMP byte [RDI], SIL ; check if char is found
         JE .found ; if char is found, jump to found
+        CMP byte [RDI], 0 ; check if end of string
+        JE .not_found ; if end of string, jump to not_found
         INC RDI ; increment counter
         JMP .loop ; loop
 
