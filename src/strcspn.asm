@@ -27,8 +27,8 @@ strcspn:
         CMP byte [RCX], 0 ; check if end of string
         JE .next ; if end of string, jump to next
 
-        MOV AL, [RCX] ; move char to AL
-        CMP AL, [RDI] ; compare char to search
+        MOV BL, [RCX] ; move char to BL
+        CMP BL, [RDI] ; compare char to search
         JE .end ; if char found, jump to end
 
         INC RCX ; move to next char
